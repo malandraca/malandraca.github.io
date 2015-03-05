@@ -19,7 +19,13 @@
 /* verde chillon #a9eb3f*/
 
 body {
-    background-color: #fff;
+    background-color: #000;
+    background: url('/img/fondo_gordo_polaco-01.png') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -142,8 +148,12 @@ a:after {
 	font-size: 4em;
 	font-weight: 900;
 	letter-spacing: 0px;
-	color: #727378;
+	color: #F48414;
     margin: 0px 0px 0px 0px;
+}
+
+#hello h1 span{
+	font-size: 5em;
 }
 
 #logo {
@@ -156,10 +166,10 @@ a:after {
 
 #hello h2 {
 	color: #c0c0c0;
-	font-weight: 400;
-    color: #61c11f;
+	font-weight: 600;
+    color: #fff;
     margin: 0px 0px 0px 0px;
-    padding-left: 6.3em;
+    padding-left: 8.5em;
 }
 
 /* Green */
@@ -260,8 +270,13 @@ a:after {
     display: inline-block;
     font-weight: 600;
     font-size: 1em;
+    color: #fff;
 }
 
 .song-info {
+    
+}
+
+span {
     
 }
