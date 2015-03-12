@@ -1,0 +1,33 @@
+<div id="hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 centered">
+
+                <img id="logo" src="images/logo.png" alt="logo" />
+                <div class="centered">
+                    <h1>PREGONERA</h1>
+                    <h2>RADIO TANGO</h2>
+                </div>
+                <!-- /col-lg-8 -->
+            </div>
+            <!-- /row -->
+        </div>
+    </div>
+</div>
+
+<div class="player">
+    <div class="player-controls">
+<!--        <input width="50" id="volume" type="text" data-slider="true" value="50" data-slider-range="0,100" data-slider-step="1">-->
+        <input type="range" min="0" max="100" ng-model="player.volume" />
+        <button class="play" role="button" tabindex="0" ng-click='play()'><span class="ion-play"></span>
+        </button>
+        <button class="stop hide" role="button" tabindex="0"><span class="ion-stop"></span>
+        </button>
+
+    </div>
+    <div class="song-info">
+        <spam id="songName">Troilo Anibal, Some son some son</spam>
+    </div>
+</div>
+</div>
+</div>
