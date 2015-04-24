@@ -1,0 +1,102 @@
+<html> <head> <title>Malandraca app</title> <style type="text/css">div { padding: 10px; }</style> <meta charset="UTF-8">  <body> <script type="text/javascript">// You probably don't want to use globals, but this is just example code
+  var fbAppId = '1611432049071720';
+  var objectToLike = 'http://www.malandraca.com';
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : fbAppId,
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+
+  /*
+   * This function makes a call to the og.likes API.  The
+   * object argument is the object you like.  Other types
+   * of APIs may take other arguments. (i.e. the book.reads
+   * API takes a book= argument.)
+   *
+   * Because it's a sample, it also sets the privacy
+   * parameter so that it will create a story that only you
+   * can see.  Remove the privacy parameter and the story
+   * will be visible to whatever the default privacy was when
+   * you added the app.
+   *
+   * Also note that you can view any story with the id, as
+   * demonstrated with the code below.
+   *
+   * APIs used in postLike():
+   * Call the Graph API from JS:
+   *   https://developers.facebook.com/docs/reference/javascript/FB.api
+   * The Open Graph og.likes API:
+   *   https://developers.facebook.com/docs/reference/opengraph/action-type/og.likes
+   * Privacy argument:
+   *   https://developers.facebook.com/docs/reference/api/privacy-parameter
+   */
+
+  function postLike() {
+    FB.api(
+       'https://graph.facebook.com/me/og.likes',
+       'post',
+       { object: objectToLike,
+         privacy: {'value': 'SELF'} },
+       function(response) {
+         if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('result').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('result').innerHTML =
+             '<a href=\"https://www.facebook.com/me/activity/' +
+             response.id + '\">' +
+             'Story created.  ID is ' +
+             response.id + '</a>';
+         }
+       }
+    );
+  }
+  
+  
+  function listenMalandraca(){
+	FB.api(
+		'https://graph.facebook.com/me/music.listens',
+		'POST',
+		{
+			'song': 'Alguna-de-troilo',
+			'radio_station': 'http://www.malandraca.com'
+		},
+		function (response) {
+		  if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('result').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('result').innerHTML =
+             response.id + 
+             'Story created.  ID is ' +
+             response.id;
+         }
+		}
+	);
+  
+  }</script> <!--
+  Login Button
+
+  https://developers.facebook.com/docs/reference/plugins/login
+
+  This example needs the 'publish_actions' permission in
+  order to publish an action.  The scope parameter below
+  is what prompts the user for that permission.
+--> <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1" data-scope="publish_actions"> </div> <fb:login-button scope="public_profile,email"> </fb:login-button> <div> This example creates a story on Facebook using the <a href="https://developers.facebook.com/docs/reference/ogaction/og.likes"> <code>og.likes</code></a> API. That story will just say that you like an <a href="http://www.malandraca.com">Do like to malandraca!</a>. The story should only be visible to you. </div> <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"> </div> <div> <input type="button" value="Create a story with an og.likes action" onclick="postLike()"> </div> <input type="button" value="Create a listen malandraca action" onclick="listenMalandraca()">  <div id="result"></div>  
