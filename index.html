@@ -16,7 +16,12 @@
                 port: 6366,
                 interval: 5000,
                 stats: function () {
-                    $('#songName').text(this.get('songtitle').toLowerCase());
+                    
+                    var songTitle = this.get('songtitle').toLowerCase();
+                    
+                    songTitle = songTitle.substr(0, songTitle.lastIndexOf("|"));  
+                    
+                    $('#songName').text(songTitle);
                 }
             }).startStats();
         });
